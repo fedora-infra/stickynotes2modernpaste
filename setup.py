@@ -9,7 +9,7 @@ import os
 here = os.path.abspath(os.path.dirname(__file__))
 
 setup(name='stickynotes2modernpaste',
-      version='1.0.0',
+      version='1.1.0',
       description='Web application for bridging between sticky-notes and modernpaste',
       author='Ricky Elrod',
       author_email='relrod@redhat.com',

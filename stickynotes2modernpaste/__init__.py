@@ -25,15 +25,19 @@ def main():
     password = request.form.get('paste_password')
     author = request.form.get('paste_user')
 
+    payload = {
+        'contents': text,
+        'language': language,
+        #'expiry_time': expire # Disabled because we force this to 1wk for now.
+        'title': author + "'s paste"
+    }
+
+    if password != '':
+        payload['password'] = password
+
     resp = requests.post(
         MODERNPASTE + '/api/paste/submit',
-        json={
-            'contents': text,
-            'language': language,
-            'password': password,
-            #'expiry_time': expire # Disabled because we force this to 1wk for now.
-            'title': author + "'s paste"
-        }
+        json=payload
     )
 
     if resp.status_code != 200:
