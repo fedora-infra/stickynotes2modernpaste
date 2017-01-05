@@ -43,7 +43,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/%{name}
 install config.ini %{buildroot}%{_sysconfdir}/%{name}
 
 %files
-%doc README.md
+#%%doc README.md
 
 %{python_sitelib}/*
 %dir %{_sysconfdir}/%{name}
