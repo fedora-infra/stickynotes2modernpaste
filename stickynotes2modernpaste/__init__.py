@@ -48,16 +48,21 @@ def main():
             r({'error': 'Received non-200 status code from Modern Paste'}))
 
     return json.dumps(
-        r({'id': resp.json()['paste_id_repr'],
-           'hash': resp.json()['paste_id_repr']
+        r({'id': 'paste/' + resp.json()['paste_id_repr'],
+           'hash': ''
         }))
 
 @app.route('/<path:path>', methods=['POST'])
 def shorten(path):
-    p = path.replace('/', '')
+    if path.endswith('//'):
+        p = path[:-2]
+    elif path.endswith('/'):
+        p = path[:-1]
+    else:
+        p = path
     resp = requests.get(
         'https://da.gd/s',
-        params={'url': MODERNPASTE + '/paste/' + p, 'strip': True})
+        params={'url': MODERNPASTE + '/' + p, 'strip': True})
     if resp.status_code != 200:
         return json.dumps(
             r({'error': 'Could not shorten URL'}))
