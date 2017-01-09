@@ -29,8 +29,11 @@ def main():
         'contents': text,
         'language': language,
         #'expiry_time': expire # Disabled because we force this to 1wk for now.
-        'title': author + "'s paste"
+        'title': "Anonymous user's paste"
     }
+
+    if author != '':
+        payload['title'] = author + "'s paste"
 
     if password != '':
         payload['password'] = password

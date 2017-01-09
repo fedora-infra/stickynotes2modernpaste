@@ -3,7 +3,7 @@
 %{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 
 Name:           stickynotes2modernpaste
-Version:        1.1.0
+Version:        1.1.1
 Release:        1%{?dist}
 Summary:        A (temporary) bridge from sticky-notes to modernpaste for the fpaste client
 
@@ -52,6 +52,9 @@ install config.ini %{buildroot}%{_sysconfdir}/%{name}
 %{_datadir}/%{name}/*
 
 %changelog
+* Mon Jan 9 2017 Ricky Elrod <relrod@redhat.com> - 1.1.1-1
+- Latest release.
+
 * Thu Jan 5 2017 Ricky Elrod <relrod@redhat.com> - 1.1.0-1
 - Latest release.
 
